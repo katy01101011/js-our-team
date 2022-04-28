@@ -44,5 +44,5 @@ for (let i = 0; i < team.length; i++) {
     document.getElementById('roles').innerHTML += `${rolesArray}<br>`;
 
     const imagesArray = teamMembers.image;
-    document.getElementById('images').innerHTML += `${imagesArray}<br>`;
+    document.getElementById('images') += `${imagesArray}<br>`;
 }

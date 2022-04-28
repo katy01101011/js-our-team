@@ -31,13 +31,21 @@ const team = [
     },
   ];
 
-//   MILESTONE 1:
-// stampare su console le informazioni di nome, ruolo e la stringa della foto
-
+// BONUS 1:
+// trasformare la stringa foto in una immagine effettiva
+let teamMembers;
 for (let i = 0; i < team.length; i++) {
-    const teamMembers = team[i];
+    teamMembers = team[i];
 
-    console.log(teamMembers.name);
-    console.log(teamMembers.role);
-    console.log(teamMembers.image);
+    const namesArray = teamMembers.name;
+    document.getElementById('names').innerHTML += `${namesArray}<br>`;
+
+    const rolesArray = teamMembers.role;
+    document.getElementById('roles').innerHTML += `${rolesArray}<br>`;
+
+    const imagesArray = teamMembers.image;
+    let picContainer = document.getElementById('images');
+    let pic = document.createElement('img');
+    pic.src = `img/${imagesArray}`;
+    picContainer.append(pic);
 }
