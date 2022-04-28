@@ -31,8 +31,17 @@ const team = [
     },
   ];
 
-  // BONUS 2:
-  // organizzare i singoli membri in card/schede
+console.log(team.role);
+
+// BONUS 3:
+// Utilizzare gli input presenti nella pagina per permettere all'utente
+// di aggiungere nuovi membri del team: cliccando sul pulsante "add"
+// viene creato un nuovo oggetto, il quale viene inserito nell'array
+// iniziale e viene stampata una nuova card con tutte le informazioni
+// inserite dall'utente.
+
+const teamContainer = document.querySelector('.team-container');
+
 let teamMembers;
 for (let i = 0; i < team.length; i++) {
     teamMembers = team[i];
@@ -41,27 +50,43 @@ for (let i = 0; i < team.length; i++) {
     const rolesArray = teamMembers.role;
     const imagesArray = teamMembers.image;
 
-    const card = document.getElementById('card');
+    let teamCard = document.createElement('div');
+    teamCard.classList.add('team-card');
+    teamContainer.append(teamCard);
 
-    let cardPic = document.createElement('img');
-    cardPic.src = `img/${imagesArray}`;
-    card.append(cardPic);
+    let cardImage = document.createElement('div');
+    cardImage.classList.add('card-image');
+    teamCard.append(cardImage);
 
-    let cardTitle;
-    newElementAppended(cardTitle, 'h1', card, namesArray);
+    let img = document.createElement('img');
+    img.src = `img/${imagesArray}`;
+    img.alt = `${namesArray}`;
+    cardImage.append(img);
 
-    let cardSubtitle;
-    newElementAppended(cardSubtitle, 'h2', card, rolesArray);
+    let cardText = document.createElement('div');
+    cardText.classList.add('card-text');
+    teamCard.append(cardText);
+
+    let cardTitle= document.createElement('h3');
+    cardTitle.innerHTML = namesArray;
+    cardText.append(cardTitle);
+
+    let cardParagraph= document.createElement('p');
+    cardParagraph.innerHTML = rolesArray;
+    cardText.append(cardParagraph);
 }
 
-/**
- * Description // Crea un elemento nuovo e lo appende
- * @param {var} newElement // Il nome della variabile da creare e appendere
- * @param {var} element // Il tipo del tag da creare es. 'div'
- * @param {var} whereAppend // Elemento al quale viene appeso l'elemento appena creato
-*/
- function newElementAppended(newElement, element, whereAppend, array) {
-  newElement = document.createElement(element);
-  newElement.innerHTML = `${array}`;
-  whereAppend.append(newElement);
+let formName = document.getElementById('name').value;
+let formRole = document.getElementById('role').value;
+let formImage = document.getElementById('image').value;
+
+const newTeamMember = {
+  name: formName,
+  role: formRole,
+  image: formImage // Come metto l'URL?
 }
+
+const button = document.getElementById('addMemberButton');
+button.addEventListener('click', function() {
+  team.push(newTeamMember);
+})
