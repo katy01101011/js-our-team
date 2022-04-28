@@ -41,7 +41,14 @@ for (let i = 0; i < team.length; i++) {
     const rolesArray = teamMembers.role;
     const imagesArray = teamMembers.image;
 
-    const card = document.getElementById('card');
+    const cards = document.getElementById('cards')
+
+    const card = document.createElement('div');
+    card.classList.add('card');
+    cards.append(card);
+
+    
+    // document.getElementById('card')
 
     let cardPic = document.createElement('img');
     cardPic.src = `img/${imagesArray}`;

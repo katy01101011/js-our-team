@@ -1,4 +1,10 @@
-#card {
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
     width: 30vw;
     padding: 1rem;
     text-align: center;
